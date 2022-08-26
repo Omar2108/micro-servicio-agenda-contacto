@@ -3,4 +3,4 @@
  
  Desarrollada con Spring boot version 2.7.3, se utilizo como dependencias Spring web, spring boot devtools, spring-boot-starter-data-jpa, mysql-connector-java, y lombok, como manejador de base de datos MySQL version 8.0.30.
  
- Documnetacion del proyecto o Swagger en la direccion http://localhost:8080/v3/api-docs/
+ Documnetacion o Swagger de la API, la podra ver en la direccion http://localhost:8080/swagger-ui.html
