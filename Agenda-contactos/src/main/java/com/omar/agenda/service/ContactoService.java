@@ -81,51 +81,51 @@ public class ContactoService implements IContactoService{
     /**
      * Metodo para modificar el nombre de un contacto por el id un contacto
      * @param id
-     * @param contacto
+     * @param nombre
      * 
      */
     
     @Transactional
-    public void updateNombre(Long id, Contacto contacto) {
-       contactoRepository.updateNombre(id, contacto.getNombreCompleto());
+    public void updateNombre(Long id, String nombre) {
+       contactoRepository.updateNombre(id, nombre);
     }
     
     /**
      * Metodo para modificar el telefono de un contacto por el id un contacto
      * @param id
-     * @param contacto
+     * @param telefono
      * 
      */
     
     @Transactional
-    public void updateTelefono(Long id, Contacto contacto) {
-       contactoRepository.updateTelefono(id, contacto.getTelefono());
+    public void updateTelefono(Long id, String telefono) {
+       contactoRepository.updateTelefono(id, telefono);
     }
     
     
     /**
      * Metodo para modificar el email de un contacto por el id un contacto
      * @param id
-     * @param contacto
+     * @param email
      * 
      */
     
     @Transactional
-    public void updateEmail(Long id, Contacto contacto) {
-       contactoRepository.updateEmail(id, contacto.getEmail());
+    public void updateEmail(Long id, String email) {
+       contactoRepository.updateEmail(id, email);
     }
     
     
     /**
      * Metodo para modificar la fecha de nacimiento de un contacto por el id un contacto
      * @param id
-     * @param contacto
+     * @param direccion
      * 
      */
     
     @Transactional
-    public void updateDireccion(Long id, Contacto contacto) {
-       contactoRepository.updateDireccion(id, contacto.getDireccion());
+    public void updateDireccion(Long id, String direccion) {
+       contactoRepository.updateDireccion(id, direccion);
     }
     
    

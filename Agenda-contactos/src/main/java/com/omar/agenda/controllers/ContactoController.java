@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -61,14 +61,14 @@ public class ContactoController {
      */
     
     @PostMapping(path = "/add")
-    public @ResponseBody String agregarContacto(@RequestParam String nombreCompleto,@RequestParam String telefono, @RequestParam String email, @RequestParam String direccion) {
+    public @ResponseBody String agregarContacto(@RequestBody Contacto contacto) {
         
         Contacto cont = new Contacto();
         
-        cont.setNombreCompleto(nombreCompleto);
-        cont.setTelefono(telefono);
-        cont.setEmail(email);
-        cont.setDireccion(direccion);
+        cont.setNombreCompleto(contacto.getNombreCompleto());
+        cont.setTelefono(contacto.getTelefono());
+        cont.setEmail(contacto.getEmail());
+        cont.setDireccion(contacto.getDireccion());
         contactoService.save(cont);
         return "Saved";
     }
@@ -103,57 +103,57 @@ public class ContactoController {
     /**
      * Metodo para actualizar el nombre del contacto
      *
-     * @param contacto
+     * @param nombre
      * @param id
      * @return
      */
     @PatchMapping(path = "/contacto/nombre/{id}")
-    public ResponseEntity<Contacto> editarnombre(Contacto contacto, @PathVariable("id") Long id) {
-        log.info("Modificar el nombre del contacto: {}", contacto);
-        contactoService.updateNombre(id, contacto);
-        return new ResponseEntity<>(contacto, HttpStatus.OK);
+    public ResponseEntity<String> editarnombre(@RequestBody String nombre, @PathVariable("id") Long id) {
+        log.info("Modificar el nombre del contacto: {}", nombre);
+        contactoService.updateNombre(id, nombre);
+        return new ResponseEntity<>(nombre, HttpStatus.OK);
     }
 
     /**
      * Metodo para actualizar el numero de telefono del contacto
      *
-     * @param contacto
+     * @param telefono
      * @param id
      * @return
      */
     @PatchMapping(path = "/contacto/telefono/{id}")
-    public ResponseEntity<Contacto> editarTelefono(Contacto contacto, @PathVariable("id") Long id) {
-        log.info("Modificar el telefono del contacto: {}", contacto);
-        contactoService.updateTelefono(id, contacto);
-        return new ResponseEntity<>(contacto, HttpStatus.OK);
+    public ResponseEntity<String> editarTelefono(@RequestBody String telefono, @PathVariable("id") Long id) {
+        log.info("Modificar el telefono del contacto: {}", telefono);
+        contactoService.updateTelefono(id, telefono);
+        return new ResponseEntity<>(telefono, HttpStatus.OK);
     }
 
     /**
      * Metodo para actualizar el correo electronico del contacto
      *
-     * @param contacto
+     * @param email
      * @param id
      * @return
      */
     @PatchMapping(path = "/contacto/email/{id}")
-    public ResponseEntity<Contacto> editarEmail(Contacto contacto, @PathVariable("id") Long id) {
-        log.info("Modificar el email del contacto: {}", contacto);
-        contactoService.updateEmail(id, contacto);
-        return new ResponseEntity<>(contacto, HttpStatus.OK);
+    public ResponseEntity<String> editarEmail(@RequestBody String email, @PathVariable("id") Long id) {
+        log.info("Modificar el email del contacto: {}", email);
+        contactoService.updateEmail(id, email);
+        return new ResponseEntity<>(email, HttpStatus.OK);
     }
 
     /**
      * Metodo para actualizar la direccion del contacto
      *
-     * @param contacto
+     * @param direccion
      * @param id
      * @return
      */
     @PatchMapping(path = "/contacto/direccion/{id}")
-    public ResponseEntity<Contacto> editarDireccion(Contacto contacto, @PathVariable("id") Long id) {
-        log.info("Modificar la direccion del contacto: {}", contacto);
-        contactoService.updateDireccion(id, contacto);
-        return new ResponseEntity<>(contacto, HttpStatus.OK);
+    public ResponseEntity<String> editarDireccion(@RequestBody String direccion, @PathVariable("id") Long id) {
+        log.info("Modificar la direccion del contacto: {}", direccion);
+        contactoService.updateDireccion(id, direccion);
+        return new ResponseEntity<>(direccion, HttpStatus.OK);
     }
 
 
