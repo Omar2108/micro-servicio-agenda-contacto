@@ -31,4 +31,12 @@ public interface ContactoRepository extends CrudRepository<Contacto, Long>{
     @Query("update Contacto contact set contact.direccion = :direccion where contact.id = :id")
     public void updateDireccion(@Param(value="id") Long id, @Param(value="direccion") String direccion);
     
+    @Modifying
+    @Query("update Contacto contact set contact.tipoRelacion = :tipoRelacion where contact.id = :id")
+    public void updateTipoRelacion(@Param(value="id") Long id, @Param(value="tipoRelacion") String tipoRelacion);
+    
+    @Modifying
+    @Query("update Contacto contact set contact.relacion = :relacion where contact.id = :id")
+    public void updateRelacion(@Param(value="id") Long id, @Param(value="relacion") String relacion);
+    
 }

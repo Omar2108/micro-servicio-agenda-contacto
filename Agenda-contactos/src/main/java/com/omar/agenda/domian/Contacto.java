@@ -32,6 +32,10 @@ public class Contacto implements Serializable {
     
     private String direccion;
     
+    private String tipoRelacion;
+    
+    private String relacion;
+    
     public Long getId() {
         return id;
     }
@@ -70,6 +74,22 @@ public class Contacto implements Serializable {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+    
+    public void setTipoRelacion(String tipoRelacion) {
+        this.tipoRelacion = tipoRelacion;
+    }
+    
+    public void setRelacion(String relacion) {
+        this.relacion = relacion;
+    }
+    
+    public String getTipoRelacion() {
+        return tipoRelacion;
+    }
+    
+    public String getRelacion() {
+        return relacion;
     }
 
 

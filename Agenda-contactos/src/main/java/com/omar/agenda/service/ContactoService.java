@@ -117,7 +117,7 @@ public class ContactoService implements IContactoService{
     
     
     /**
-     * Metodo para modificar la fecha de nacimiento de un contacto por el id un contacto
+     * Metodo para modificar la direccion de un contacto por el id un contacto
      * @param id
      * @param direccion
      * 
@@ -128,6 +128,31 @@ public class ContactoService implements IContactoService{
        contactoRepository.updateDireccion(id, direccion);
     }
     
+    
+    /**
+     * Metodo para modificar el tipo de relacion del contacto por el id un contacto
+     * @param id
+     * @param tipoRelacion
+     * 
+     */
+    
+    @Transactional
+    public void updateTipoRelacion(Long id, String tipoRelacion) {
+       contactoRepository.updateTipoRelacion(id, tipoRelacion);
+    }
+    
+    
+    /**
+     * Metodo para modificar la relacion del contacto por el id un contacto
+     * @param id
+     * @param relacion
+     * 
+     */
+    
+    @Transactional
+    public void updateRelacion(Long id, String relacion) {
+       contactoRepository.updateRelacion(id, relacion);
+    }
    
     
     /**

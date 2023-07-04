@@ -53,22 +53,21 @@ public class ContactoController {
     /**
      * Metodo para agregar un contacto
      *
-     * @param nombreCompleto
-     * @param telefono
-     * @param email
-     * @param direccion
+     * @param contacto
      * @return
      */
     
     @PostMapping(path = "/add")
     public @ResponseBody String agregarContacto(@RequestBody Contacto contacto) {
-        
+        log.info("contacto a modificar: {}", contacto);
         Contacto cont = new Contacto();
         
         cont.setNombreCompleto(contacto.getNombreCompleto());
         cont.setTelefono(contacto.getTelefono());
         cont.setEmail(contacto.getEmail());
         cont.setDireccion(contacto.getDireccion());
+        cont.setTipoRelacion(contacto.getTipoRelacion());
+        cont.setRelacion(contacto.getRelacion());
         contactoService.save(cont);
         return "Saved";
     }
@@ -154,6 +153,35 @@ public class ContactoController {
         log.info("Modificar la direccion del contacto: {}", direccion);
         contactoService.updateDireccion(id, direccion);
         return new ResponseEntity<>(direccion, HttpStatus.OK);
+    }
+    
+    /**
+     * Metodo para actualizar el tipo de relacion de un contacto
+     *
+     * @param tipoRelacion
+     * @param id
+     * @return
+     */
+    @PatchMapping(path = "/contacto/tipo-relacion/{id}")
+    public ResponseEntity<String> editarTipoRelacion(@RequestBody String tipoRelacion, @PathVariable("id") Long id) {
+        log.info("Modificar el tipo de relacion del contacto: {}", tipoRelacion);
+        contactoService.updateTipoRelacion(id, tipoRelacion);
+        return new ResponseEntity<>(tipoRelacion, HttpStatus.OK);
+    }
+    
+    
+     /**
+     * Metodo para actualizar el tipo de relacion de un contacto
+     *
+     * @param relacion
+     * @param id
+     * @return
+     */
+    @PatchMapping(path = "/contacto/relacion/{id}")
+    public ResponseEntity<String> editarRelacion(@RequestBody String relacion, @PathVariable("id") Long id) {
+        log.info("Modificar la relacion del contacto: {}", relacion);
+        contactoService.updateRelacion(id, relacion);
+        return new ResponseEntity<>(relacion, HttpStatus.OK);
     }
 
 
