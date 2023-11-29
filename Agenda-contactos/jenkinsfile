@@ -1,9 +1,6 @@
 pipeline{
-    agent any
-    tools{
-        jdk "jdk_17"
-    }
-
+   agent any
+   
     stages{
         stage("install"){
             steps{
