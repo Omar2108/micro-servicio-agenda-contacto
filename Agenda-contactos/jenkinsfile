@@ -12,7 +12,7 @@ pipeline{
         }
         stage('test'){
             steps{
-                 dir('Agenda_contactos'){
+                 dir('Agenda-contactos'){
                     sh 'mvn test'
                  }
             }
