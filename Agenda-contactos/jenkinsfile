@@ -1,8 +1,12 @@
 pipeline{
    agent any
+
+tools{
+        maven 'Maven'
+    }
    
     stages{
-        stage("install"){
+        stage("SCM Checkout"){
             steps{
                 git branch: 'main', url: 'https://github.com/Omar2108/micro-servicio-agenda-contacto.git'
             }
@@ -10,7 +14,7 @@ pipeline{
         stage('test'){
             steps{
                  dir('Agenda-contactos'){
-                    sh 'mvn test'
+                    bat 'mvn test'
                  }
             }
         }
