@@ -1,0 +1,21 @@
+pipeline{
+    agent any
+    tools{
+        jdk "jdk_17"
+    }
+
+    stages{
+        stage("install"){
+            steps{
+                git branch: 'main', url: 'https://github.com/Omar2108/micro-servicio-agenda-contacto.git'
+            }
+        }
+        stage('test'){
+            steps{
+                 dir('Agenda_contactos'){
+                    sh 'mvn test'
+                 }
+            }
+        }
+    }
+}

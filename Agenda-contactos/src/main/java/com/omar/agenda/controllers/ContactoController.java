@@ -1,4 +1,3 @@
-
 package com.omar.agenda.controllers;
 
 import com.omar.agenda.domian.Contacto;
@@ -27,17 +26,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Omar Rodriguez Chamorro < omar.rodriguez2108@hotmail.com >
  * @version 1.0.0 24/08/2022
  */
-
 @RestController
 @Slf4j
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT,RequestMethod.PATCH})
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.PATCH})
 @RequestMapping(path = "/agenda")
 public class ContactoController {
-    
+
     @Autowired//para inyectar ContactoService
     private ContactoService contactoService;
 
-    
     /**
      * Metodo para listar todo los contactos
      *
@@ -56,12 +53,11 @@ public class ContactoController {
      * @param contacto
      * @return
      */
-    
     @PostMapping(path = "/add")
-    public @ResponseBody String agregarContacto(@RequestBody Contacto contacto) {
+    public ResponseEntity<Contacto> agregarContacto(@RequestBody Contacto contacto) {
         log.info("contacto a modificar: {}", contacto);
         Contacto cont = new Contacto();
-        
+
         cont.setNombreCompleto(contacto.getNombreCompleto());
         cont.setTelefono(contacto.getTelefono());
         cont.setEmail(contacto.getEmail());
@@ -69,10 +65,9 @@ public class ContactoController {
         cont.setTipoRelacion(contacto.getTipoRelacion());
         cont.setRelacion(contacto.getRelacion());
         contactoService.save(cont);
-        return "Saved";
+        return new ResponseEntity<>(cont, HttpStatus.CREATED);
     }
-    
-    
+
     /**
      * Metodo para consultar la informacion completa de un contacto
      *
@@ -80,9 +75,14 @@ public class ContactoController {
      * @return
      */
     @GetMapping(path = "/find/{id}")
-    public Optional<Contacto> consultarContacto(@PathVariable("id") Long id) {
+    public ResponseEntity<Optional<Contacto>> consultarContacto(@PathVariable("id") Long id) {
         var contacto = contactoService.findContact(id);
-        return contacto;
+        if(contacto.isPresent()){
+            return new ResponseEntity<>(contacto, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(contacto, HttpStatus.NOT_FOUND);
+        }
+        
     }
 
     /**
@@ -154,7 +154,7 @@ public class ContactoController {
         contactoService.updateDireccion(id, direccion);
         return new ResponseEntity<>(direccion, HttpStatus.OK);
     }
-    
+
     /**
      * Metodo para actualizar el tipo de relacion de un contacto
      *
@@ -168,9 +168,8 @@ public class ContactoController {
         contactoService.updateTipoRelacion(id, tipoRelacion);
         return new ResponseEntity<>(tipoRelacion, HttpStatus.OK);
     }
-    
-    
-     /**
+
+    /**
      * Metodo para actualizar el tipo de relacion de un contacto
      *
      * @param relacion
@@ -184,7 +183,6 @@ public class ContactoController {
         return new ResponseEntity<>(relacion, HttpStatus.OK);
     }
 
-
     /**
      * Metodo para borrado fisico un contacto
      *
@@ -192,10 +190,11 @@ public class ContactoController {
      * @return
      */
     @DeleteMapping(path = "/delete/{id}")
-    public @ResponseBody String eliminarContacto(Contacto contacto) {
+    public @ResponseBody
+    String eliminarContacto(Contacto contacto) {
         log.info("contacto a eliminar: {}", contacto);
         contactoService.delete(contacto);
         return "deleted contact";
     }
-    
+
 }
