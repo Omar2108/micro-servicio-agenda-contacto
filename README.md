@@ -14,7 +14,7 @@
  ### Forma 2:
  -Crear una carpeta, ingresar a git bash y ejecutar la siguiente linea de comando:
     
-           git clone [https://github.com/Omar2108/sistema-gestion-inventario-java.git](https://github.com/Omar2108/micro-servicio-agenda-contacto.git)
+           git clone https://github.com/Omar2108/micro-servicio-agenda-contacto.git
             
  -Luego lo puede abrir en el IDE que este utilizando, importando el proyecto o desde un editor de codigo de su preferencia.
       
@@ -31,14 +31,14 @@
 Siempre se recomienda descargar desde GitHub la última versión.
 ###  Usando la línea de comando:
 ####  via Git:
-    git clone [https://github.com/Omar2108/sistema-gestion-inventario-java.git](https://github.com/Omar2108/micro-servicio-agenda-contacto.git)
+    git clone https://github.com/Omar2108/micro-servicio-agenda-contacto.git
 
 ## Compatibilidad
 - Sistema operativo Windows 10
 
 ## Contribución
 1. Crea un Fork del repositorio.
-2. Clonar en tu maquina mediante git clone [https://github.com/Omar2108/sistema-gestion-inventario-java.git](https://github.com/Omar2108/micro-servicio-agenda-contacto.git)
+2. Clonar en tu maquina mediante git clone https://github.com/Omar2108/micro-servicio-agenda-contacto.git
 3. Crear una nueva rama.
 4. Realiza tus cambios.
 5. Manda tu pull request.
