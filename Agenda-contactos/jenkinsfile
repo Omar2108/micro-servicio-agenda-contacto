@@ -6,9 +6,13 @@ tools{
     }
    
     stages{
-        stage("SCM Checkout"){
+        stage("SCM Checkout and install"){
             steps{
                 git branch: 'main', url: 'https://github.com/Omar2108/micro-servicio-agenda-contacto.git'
+
+               dir('Agenda-contactos'){
+                    bat 'mvn install'
+                 }
             }
         }
         stage('test'){
