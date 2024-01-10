@@ -23,6 +23,10 @@
 #### En Desarrollo
      En su IDE dar click en run para comenzar a correr el programa
      Correr los test: mvn test
+#### Con Docker
+     - A traves de linea de comando, utilice el siguiente: docker-compose up
+     - A traves de linea de comando para detener, utilice el siguiente: tecla control + c 
+     - A traves de linea de comando para eliminar los contenedores, utilice el siguiente: docker-compose down
 #### En Produccion 
     - A traves de linea de comando, utilice el siguiente: mvn spring-boot:run
     - Dando doble click en el archivo .jar
